@@ -44,6 +44,7 @@
   }
 
   #show: thmrules
+  #show: thmrules.with(qed-symbol: $square$)
 
   #content
 ]
