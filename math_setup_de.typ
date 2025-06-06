@@ -18,7 +18,8 @@
 
 #let applyStyles(content) = [
   #set par(leading: 0.55em, first-line-indent: 1.8em, justify: true, spacing: 0.55em)
-  #set text(font: "New Computer Modern", size: 12pt, lang: "de")
+  #set text(size: 12pt, lang: "de")
+  #set text(font: "New Computer Modern")
   #set page(numbering: "1", paper: "a4")
   #show raw: set text(font: "New Computer Modern Mono")
   #show heading: set block(above: 1.4em, below: 1em)
