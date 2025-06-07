@@ -104,3 +104,5 @@
     }
   }
 }
+
+#let innerproduct(x, y) = $lr(angle.l #x, #y angle.r)$
