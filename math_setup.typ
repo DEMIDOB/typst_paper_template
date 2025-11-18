@@ -76,7 +76,7 @@
 #let today = datetime.today()
 
 #let header_section(title, authors) = [
-  #align(center, text(size: 19pt)[#title]) 
+  #align(center, text(size: 21pt)[#title]) 
   #block(height: 0.5em)
   #align(center, text(size: 13pt)[#authors]) 
   #block(height: 0.5em)
