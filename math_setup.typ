@@ -18,17 +18,18 @@
 
 #let applyStyles(content) = [
   #set par(leading: 0.55em, first-line-indent: 1.8em, justify: true, spacing: 0.55em)
-  #set text(size: 12pt, lang: "de")
+  #set text(size: 11pt, lang: "en")
   #set text(font: "New Computer Modern")
   #set page(numbering: "1", paper: "a4")
   #show raw: set text(font: "New Computer Modern Mono")
   #show heading: set block(above: 1.4em, below: 1em)
 
-  #set enum(numbering: "(i)")
+  #set enum(numbering: "(i)", spacing: 1em)
 
   #set heading(numbering: latexHeadingNumbering)
   #set math.equation(numbering: "(1)")
-
+  #show math.equation.where(block: true): set block(spacing: 1.1em)
+  
   #show ref: it => {
     let eq = math.equation
     let el = it.element
@@ -50,19 +51,19 @@
   #content
 ]
 
-#let theorem = thmbox("theorem", "Theorem", inset: 0em)
-#let corollary = thmbox("theorem", "Corollary", inset: 0em)
-#let proposition = thmbox("theorem", "Proposition", inset: 0em)
-#let lemma = thmbox("theorem", "Lemma", inset: 0em)
-#let conjecture = thmbox("theorem", "Conjecture", inset: 0em)
-#let notation = thmbox("theorem", "Notation", inset: 0em)
-#let property = thmbox("theorem", "Property", inset: 0em)
-#let definition = thmbox("theorem", "Definition", inset: 0em)
-#let intuition = thmbox("theorem", "Intuition", inset: 0em)
-#let construction = thmbox("theorem", "Construction", inset: 0em)
-#let convention = thmbox("theorem", "Convention", inset: 0em)
-#let remark = thmbox("theorem", "Remark", inset: 0em)
-#let example = thmbox("theorem", "Example", inset: 0em)
+#let theorem = thmbox("theorem", "Theorem", inset: 0em, separator: [*.*#h(0.2em)])
+#let corollary = thmbox("theorem", "Corollary", inset: 0em, separator: [*.*#h(0.2em)])
+#let proposition = thmbox("theorem", "Proposition", inset: 0em, separator: [*.*#h(0.2em)])
+#let lemma = thmbox("theorem", "Lemma", inset: 0em, separator: [*.*#h(0.2em)])
+#let conjecture = thmbox("theorem", "Conjecture", inset: 0em, separator: [*.*#h(0.2em)])
+#let notation = thmbox("theorem", "Notation", inset: 0em, separator: [*.*#h(0.2em)])
+#let property = thmbox("theorem", "Property", inset: 0em, separator: [*.*#h(0.2em)])
+#let definition = thmbox("theorem", "Definition", inset: 0em, separator: [*.*#h(0.2em)])
+#let intuition = thmbox("theorem", "Intuition", inset: 0em, separator: [*.*#h(0.2em)])
+#let construction = thmbox("theorem", "Construction", inset: 0em, separator: [*.*#h(0.2em)])
+#let convention = thmbox("theorem", "Convention", inset: 0em, separator: [*.*#h(0.2em)])
+#let remark = thmbox("theorem", "Remark", inset: 0em, separator: [*.*#h(0.2em)])
+#let example = thmbox("theorem", "Example", inset: 0em, separator: [*.*#h(0.2em)])
 
 #let important_convention(content) = {
   rect(fill: color.linear-rgb(200, 200, 200, 255))[
@@ -70,14 +71,16 @@
   ]
 }
 
-#let proof = thmproof("proof", "Proof", inset: 0em)
+#let proof = thmproof("proof", "Proof", inset: 0em, separator: [.#h(0.2em)])
 
 #let today = datetime.today()
 
 #let header_section(title, authors) = [
-  #align(center, text(size: 23pt)[#title]) \
-  #align(center)[#authors] \
-  #align(center)[#today.display("[day].[month].[year]")]
+  #align(center, text(size: 19pt)[#title]) 
+  #block(height: 0.5em)
+  #align(center, text(size: 13pt)[#authors]) 
+  #block(height: 0.5em)
+  #align(center, text(size: 13pt)[#today.display("[day].[month].[year]")])
 ]
 
 #let abstract(txt) = align(center)[
