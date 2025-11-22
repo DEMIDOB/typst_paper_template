@@ -16,9 +16,11 @@
   }
 }
 
+#let body_font_size = 11pt
+
 #let applyStyles(content) = [
   #set par(leading: 0.55em, first-line-indent: 1.8em, justify: true, spacing: 0.55em)
-  #set text(size: 11pt, lang: "en")
+  #set text(size: body_font_size, lang: "en")
   #set text(font: "New Computer Modern")
   #set page(numbering: "1", paper: "a4")
   #show raw: set text(font: "New Computer Modern Mono")
@@ -51,19 +53,40 @@
   #content
 ]
 
-#let theorem = thmbox("theorem", "Theorem", inset: 0em, separator: [*.*#h(0.2em)])
-#let corollary = thmbox("theorem", "Corollary", inset: 0em, separator: [*.*#h(0.2em)])
-#let proposition = thmbox("theorem", "Proposition", inset: 0em, separator: [*.*#h(0.2em)])
-#let lemma = thmbox("theorem", "Lemma", inset: 0em, separator: [*.*#h(0.2em)])
-#let conjecture = thmbox("theorem", "Conjecture", inset: 0em, separator: [*.*#h(0.2em)])
-#let notation = thmbox("theorem", "Notation", inset: 0em, separator: [*.*#h(0.2em)])
-#let property = thmbox("theorem", "Property", inset: 0em, separator: [*.*#h(0.2em)])
-#let definition = thmbox("theorem", "Definition", inset: 0em, separator: [*.*#h(0.2em)])
-#let intuition = thmbox("theorem", "Intuition", inset: 0em, separator: [*.*#h(0.2em)])
-#let construction = thmbox("theorem", "Construction", inset: 0em, separator: [*.*#h(0.2em)])
-#let convention = thmbox("theorem", "Convention", inset: 0em, separator: [*.*#h(0.2em)])
-#let remark = thmbox("theorem", "Remark", inset: 0em, separator: [*.*#h(0.2em)])
-#let example = thmbox("theorem", "Example", inset: 0em, separator: [*.*#h(0.2em)])
+#let new_latex_style_thmbox(name) = thmbox(
+  "theorem",
+  name,
+  inset: 0em,
+  separator: [*.*#h(0.2em)],
+  // namefmt: x => [(#emph(x))],
+  // namefmt: x => [(#x)],
+  bodyfmt: x => emph(x)
+)
+
+#let new_latex_style_secondary_thmbox(name) = thmbox(
+  "theorem",
+  name,
+  inset: 0em,
+  separator: [*.*#h(0.2em)],
+  // namefmt: x => [(#emph(x))],
+  // namefmt: x => [(#x)],
+)
+
+#let theorem = new_latex_style_thmbox("Theorem")
+#let corollary = new_latex_style_thmbox("Corollary")
+#let proposition = new_latex_style_thmbox("Proposition")
+#let lemma = new_latex_style_thmbox("Lemma")
+#let conjecture = new_latex_style_thmbox("Conjecture")
+#let notation = new_latex_style_secondary_thmbox("Notation")
+#let property = new_latex_style_thmbox("Property")
+#let definition = new_latex_style_secondary_thmbox("Definition")
+#let intuition = new_latex_style_secondary_thmbox("Intuition")
+#let construction = new_latex_style_thmbox("Construction")
+#let convention = new_latex_style_secondary_thmbox("Convention")
+#let remark = new_latex_style_secondary_thmbox("Remark")
+#let example = new_latex_style_secondary_thmbox("Example")
+#let problem = new_latex_style_thmbox("Problem")
+#let exercise = new_latex_style_thmbox("Exercise")
 
 #let important_convention(content) = {
   rect(fill: color.linear-rgb(200, 200, 200, 255))[
@@ -76,11 +99,11 @@
 #let today = datetime.today()
 
 #let header_section(title, authors) = [
-  #align(center, text(size: 21pt)[#title]) 
+  #align(center, text(size: body_font_size / 11 * 19)[#title]) 
   #block(height: 0.5em)
-  #align(center, text(size: 13pt)[#authors]) 
+  #align(center, text(size: body_font_size / 11 * 13)[#authors]) 
   #block(height: 0.5em)
-  #align(center, text(size: 13pt)[#today.display("[day].[month].[year]")])
+  #align(center, text(size: body_font_size / 11 * 13)[#today.display("[day].[month].[year]")])
 ]
 
 #let abstract(txt) = align(center)[
