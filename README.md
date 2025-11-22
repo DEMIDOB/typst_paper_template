@@ -2,4 +2,4 @@
 
 Nothing fancy, but all of my favorite and needed Latex-like styling gathered in one place. Just clone and start typsting!
 
-*Supports Typst v0.13.0*
+*Supports Typst v0.14.0*
